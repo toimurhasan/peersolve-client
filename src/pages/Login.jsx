@@ -26,9 +26,9 @@ const Login = () => {
             </div>
             <button
               type="submit"
-              className="btn bg-gradient-to-r from-blue-400 hover:shadow-lg  via-orange-600 to-pink-400 text-white rounded-full  mt-4"
+              className="btn hover:bg-gradient-to-l group  bg-gradient-to-r from-blue-400 hover:shadow-lg   via-orange-600 to-pink-400 text-white rounded-full  mt-4"
             >
-              Login
+              <span>Login</span>
             </button>
           </form>
         </div>

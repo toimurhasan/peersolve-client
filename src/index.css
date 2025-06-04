@@ -4,3 +4,6 @@
 a.active {
   background: #00000010;
 }
+.animate-bounce {
+  animation-duration: 3s;
+}
