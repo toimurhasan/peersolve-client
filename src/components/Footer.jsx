@@ -3,13 +3,13 @@ import React from "react";
 const Footer = () => {
   return (
     <div>
-      <footer className="footer footer-horizontal footer-center bg-yellow-100 text-black p-10">
+      <footer className="footer footer-horizontal footer-center bg-gradient-to-r  from-blue-300 via-orange-200 to-pink-300 text-black p-10">
         <aside>
-          <img src="/peersolve-big.png" alt="" />
+          <img src="/peersolve-big.png" alt="peersolve" />
           <p className="font-bold">
-            ACME Industries Ltd.
+            PeerSolve Ltd.
             <br />
-            Providing reliable tech since 1992
+            Helping students since 1992
           </p>
           <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
         </aside>

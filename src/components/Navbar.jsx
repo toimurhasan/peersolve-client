@@ -1,5 +1,6 @@
 import React from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const links = (
@@ -40,12 +41,15 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">PeerSolve</a>
+        <Link to={"/"} className=" text-xl">
+          <span className="font-bold">Peer</span>Solve
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end gap-2">
+        <ThemeToggle></ThemeToggle>
         <a className="btn">Login</a>
       </div>
     </div>
