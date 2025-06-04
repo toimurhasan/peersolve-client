@@ -14,10 +14,10 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 shadow-sm">
-      <div className="navbar-start">
+    <div className="navbar bg-gradient-to-r from-blue-200/95 via-orange-100 to-pink-200/95 shadow-sm fixed top-0 z-10 ">
+      <div className="navbar-start gap-1">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div tabIndex={0} role="button" className="btn  rounded-full px-2.5 lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
