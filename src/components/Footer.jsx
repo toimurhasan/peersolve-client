@@ -6,7 +6,7 @@ const Footer = () => {
     <div>
       <footer className="footer footer-horizontal footer-center bg-gradient-to-r  from-blue-300 via-orange-200 to-pink-300 text-black p-10">
         <aside>
-          <img src="/peersolve-big.png" alt="peersolve" />
+          <img className="animate-bounce" src="/peersolve-big.png" alt="peersolve" />
           <p className="font-bold">
             PeerSolve Ltd.
             <br />

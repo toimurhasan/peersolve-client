@@ -9,12 +9,15 @@ const Navbar = () => {
         <NavLink to={"/"}>Home</NavLink>
       </li>
       <li>
-        <NavLink to={"/err"}>Error</NavLink>
+        <NavLink to={"/assignments"}>Assignments</NavLink>
       </li>
     </>
   );
   return (
-    <div className="navbar bg-gradient-to-r text-black from-blue-200/95 via-orange-100 to-pink-200/95 shadow-sm fixed top-0 z-10 ">
+    <div
+      className="navbar bg-gradient-to-r text-black from-blue-200/95 via-orange-100 to-pink-200/95 shadow-sm  fixed top-0 z-10 "
+
+    >
       <div className="navbar-start gap-1">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn  rounded-full px-2.5 lg:hidden">
@@ -50,7 +53,9 @@ const Navbar = () => {
       </div>
       <div className="navbar-end gap-2">
         <ThemeToggle></ThemeToggle>
-        <a className="btn">Login</a>
+        <Link to={"/login"}>
+          <button className="btn">Login</button>
+        </Link>
       </div>
     </div>
   );
