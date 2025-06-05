@@ -1,4 +1,6 @@
 import React from "react";
+import { FaGoogle } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
 
 const Login = () => {
@@ -25,11 +27,21 @@ const Login = () => {
             <div>
               <a className="link link-hover">Forgot password?</a>
             </div>
+
             <button
               type="submit"
               className="btn hover:bg-gradient-to-l group  bg-gradient-to-r from-blue-400 hover:shadow-lg   via-orange-600 to-pink-400 text-white rounded-full  mt-4"
             >
-              <span>Login</span>
+              <span className="group-hover:-translate-y-0.5 transition">Login</span>
+            </button>
+            <div className="divider">In a hurry?</div>
+            <button
+              type="submit"
+              className="btn hover:bg-gradient-to-l group  bg-gradient-to-r from-gray-400 hover:shadow-lg   via-gray-600 to-gray-400 text-white rounded-full "
+            >
+              <span className="group-hover:-translate-y-0.5 transition flex items-center gap-2">
+                <FaGoogle /> <span>Continue With Google</span>
+              </span>
             </button>
           </form>
           <div>
