@@ -3,9 +3,13 @@ import { Link, NavLink } from "react-router";
 import ThemeToggle from "./ThemeToggle";
 import AuthContext from "../contexts/AuthContext";
 import Swal from "sweetalert2";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
   const { currentUser, signOutUser } = use(AuthContext);
+  // console.log(currentUser?.displayName);
+  const avatar = currentUser?.photoURL;
+  const userName = currentUser?.displayName;
   const handleClick = () => {
     signOutUser()
       .then(() => {
@@ -75,15 +79,28 @@ const Navbar = () => {
         <ThemeToggle></ThemeToggle>
 
         {currentUser ? (
-          <button onClick={handleClick} className="btn">
-            Sign Out
-          </button>
+          <>
+            <button onClick={handleClick} className="btn">
+              Sign Out
+            </button>
+            <div
+              data-tooltip-id="my-tooltip"
+              data-tooltip-content={userName}
+              data-tooltip-place="bottom-start"
+              className="avatar cursor-pointer"
+            >
+              <div className="w-12 rounded-full border-orange-600 shadow-2xl shadow-orange-500 border-2">
+                <img src={avatar} />
+              </div>
+            </div>
+          </>
         ) : (
           <Link to={"/login"}>
             <button className="btn">Login</button>
           </Link>
         )}
       </div>
+      <Tooltip id="my-tooltip" />
     </div>
   );
 };
