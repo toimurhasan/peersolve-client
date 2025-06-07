@@ -5,7 +5,7 @@ import { Link } from "react-router";
 import AuthContext from "../contexts/AuthContext";
 
 const Login = () => {
-  const { signInUser } = use(AuthContext);
+  const { signInUser, continueWithGoogle } = use(AuthContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -14,6 +14,17 @@ const Login = () => {
     signInUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        console.log(errorCode);
+      });
+  };
+  const handleClick = () => {
+    continueWithGoogle()
+      .then((result) => {
+        const user = result.user;
         console.log(user);
       })
       .catch((error) => {
@@ -58,6 +69,7 @@ const Login = () => {
           </form>
           <div className="divider">In a hurry?</div>
           <button
+            onClick={handleClick}
             type="submit"
             className="btn hover:bg-gradient-to-l group  bg-gradient-to-r from-gray-400 hover:shadow-lg   via-gray-600 to-gray-400 text-white rounded-full "
           >
