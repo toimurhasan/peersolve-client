@@ -4,8 +4,17 @@ import ThemeToggle from "./ThemeToggle";
 import AuthContext from "../contexts/AuthContext";
 
 const Navbar = () => {
-  const { currentUser } = use(AuthContext);
+  const { currentUser, signOutUser } = use(AuthContext);
   console.log(currentUser);
+  const handleClick = () => {
+    signOutUser()
+      .then(() => {
+        console.log("success");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const links = (
     <>
@@ -54,9 +63,16 @@ const Navbar = () => {
       </div>
       <div className="navbar-end gap-2">
         <ThemeToggle></ThemeToggle>
-        <Link to={"/login"}>
-          <button className="btn">Login</button>
-        </Link>
+
+        {currentUser ? (
+          <button onClick={handleClick} className="btn">
+            Sign Out
+          </button>
+        ) : (
+          <Link to={"/login"}>
+            <button className="btn">Login</button>
+          </Link>
+        )}
       </div>
     </div>
   );
