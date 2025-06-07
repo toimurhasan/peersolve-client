@@ -4,7 +4,8 @@ import ThemeToggle from "./ThemeToggle";
 import AuthContext from "../contexts/AuthContext";
 
 const Navbar = () => {
-  const {} = use(AuthContext);
+  const { currentUser } = use(AuthContext);
+  console.log(currentUser);
 
   const links = (
     <>
