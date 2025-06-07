@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { Link } from "react-router";
 import AuthContext from "../contexts/AuthContext";
 import Swal from "sweetalert2";
@@ -43,6 +43,17 @@ const Register = () => {
         });
       });
   };
+
+  const [password, setPassword] = useState("");
+  const [isValid, setIsValid] = useState(true);
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+  const handlePassword = (e) => {
+    const value = e.target.value;
+    setPassword(value);
+    setIsValid(passwordRegex.test(value));
+  };
+
   return (
     <div className="flex justify-center items-center py-16">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -78,19 +89,39 @@ const Register = () => {
             <label className="label">Password</label>
             <input
               required
+              onChange={handlePassword}
+              value={password}
               name="password"
               type="password"
               className="input w-full focus:outline-transparent focus:border-gray-400 focus:shadow-xl"
               placeholder="Password"
             />
-            <button
-              type="submit"
-              className="btn hover:bg-gradient-to-l group  bg-gradient-to-r from-blue-400 hover:shadow-lg   via-orange-600 to-pink-400 text-white rounded-full  mt-4"
-            >
-              <span className="group-hover:-translate-y-0.5 transition flex items-center gap-2">
-                Register
-              </span>
-            </button>
+            {!isValid && (
+              <p className="text-xs text-red-600 mt-4">
+                Password must be at least 6 characters, and include both uppercase and lowercase
+                letters.
+              </p>
+            )}
+            {isValid ? (
+              <button
+                type="submit"
+                className="btn hover:bg-gradient-to-l group  bg-gradient-to-r from-blue-400 hover:shadow-lg   via-orange-600 to-pink-400 text-white rounded-full  mt-4"
+              >
+                <span className="group-hover:-translate-y-0.5 transition flex items-center gap-2">
+                  Register
+                </span>
+              </button>
+            ) : (
+              <button
+                disabled
+                type="submit"
+                className="btn hover:bg-gradient-to-l group bg-gradient-to-r from-gray-400 hover:shadow-lg   via-gray-600 to-gray-400 text-white rounded-full  mt-4"
+              >
+                <span className="group-hover:-translate-y-0.5 transition flex items-center gap-2">
+                  Register
+                </span>
+              </button>
+            )}
           </form>
           <div>
             <p className="flex justify-center gap-1">
