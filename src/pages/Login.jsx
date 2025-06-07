@@ -1,12 +1,13 @@
 import React, { use } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import AuthContext from "../contexts/AuthContext";
 import Swal from "sweetalert2";
 
 const Login = () => {
   const { signInUser, continueWithGoogle, currentUser } = use(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -29,6 +30,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 2000,
         });
+        navigate(location?.state || "/");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -58,6 +60,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 2000,
         });
+        navigate(location?.state || "/");
       })
       .catch((error) => {
         const errorCode = error.code;
