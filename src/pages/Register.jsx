@@ -4,20 +4,34 @@ import AuthContext from "../contexts/AuthContext";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { createUser } = use(AuthContext);
+  const { createUser, updateUser } = use(AuthContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    const name = form.name.value;
+    const photo = form.photo.value;
     createUser(email, password)
       .then(() => {
-        Swal.fire({
-          icon: "success",
-          title: "Register Successful",
-          showConfirmButton: false,
-          timer: 2000,
-        });
+        updateUser(name, photo)
+          .then(() => {
+            Swal.fire({
+              icon: "success",
+              title: "Register Successful",
+              showConfirmButton: false,
+              timer: 2000,
+            });
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            Swal.fire({
+              icon: "error",
+              title: errorCode,
+              showConfirmButton: false,
+              timer: 2000,
+            });
+          });
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -39,6 +53,7 @@ const Register = () => {
           <form onSubmit={handleSubmit} className="fieldset">
             <label className="label">Name</label>
             <input
+              required
               name="name"
               type="text"
               className="input w-full focus:outline-transparent focus:border-gray-400 focus:shadow-xl"
@@ -46,6 +61,7 @@ const Register = () => {
             />
             <label className="label">Email</label>
             <input
+              required
               name="email"
               type="email"
               className="input w-full focus:outline-transparent focus:border-gray-400 focus:shadow-xl"
@@ -53,6 +69,7 @@ const Register = () => {
             />
             <label className="label">Photo URL</label>
             <input
+              required
               name="photo"
               type="text"
               className="input w-full focus:outline-transparent focus:border-gray-400 focus:shadow-xl"
@@ -60,6 +77,7 @@ const Register = () => {
             />
             <label className="label">Password</label>
             <input
+              required
               name="password"
               type="password"
               className="input w-full focus:outline-transparent focus:border-gray-400 focus:shadow-xl"

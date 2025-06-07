@@ -7,7 +7,6 @@ import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
   const { currentUser, signOutUser } = use(AuthContext);
-  // console.log(currentUser?.displayName);
   const avatar = currentUser?.photoURL;
   const userName = currentUser?.displayName;
   const handleClick = () => {
@@ -89,7 +88,7 @@ const Navbar = () => {
               data-tooltip-place="bottom-start"
               className="avatar cursor-pointer"
             >
-              <div className="w-12 rounded-full border-orange-600 shadow-2xl shadow-orange-500 border-2">
+              <div className="w-12 rounded-full border-gray-400 shadow-2xl  border-[1px]">
                 <img src={avatar} />
               </div>
             </div>
