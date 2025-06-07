@@ -1,6 +1,7 @@
 import React, { use } from "react";
 import { Link } from "react-router";
 import AuthContext from "../contexts/AuthContext";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser } = use(AuthContext);
@@ -10,18 +11,24 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     createUser(email, password)
-      .then((userCredential) => {
-        // Signed up
-        const user = userCredential.user;
-        console.log(user);
-        // ...
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Register Successful",
+          showConfirmButton: false,
+          timer: 2000,
+        });
       })
       .catch((error) => {
         const errorCode = error.code;
-        console.log(errorCode);
+        Swal.fire({
+          icon: "error",
+          title: errorCode,
+          showConfirmButton: false,
+          timer: 2000,
+        });
       });
   };
-  // console.log(createUser);
   return (
     <div className="flex justify-center items-center py-16">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">

@@ -2,17 +2,27 @@ import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import ThemeToggle from "./ThemeToggle";
 import AuthContext from "../contexts/AuthContext";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { currentUser, signOutUser } = use(AuthContext);
-  console.log(currentUser);
   const handleClick = () => {
     signOutUser()
       .then(() => {
-        console.log("success");
+        Swal.fire({
+          icon: "success",
+          title: "Sign Out Successful",
+          showConfirmButton: false,
+          timer: 2000,
+        });
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
+        Swal.fire({
+          icon: "error",
+          title: "Unexpected Error",
+          showConfirmButton: false,
+          timer: 2000,
+        });
       });
   };
 

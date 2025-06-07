@@ -3,33 +3,70 @@ import { FaGoogle } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
 import AuthContext from "../contexts/AuthContext";
+import Swal from "sweetalert2";
 
 const Login = () => {
-  const { signInUser, continueWithGoogle } = use(AuthContext);
+  const { signInUser, continueWithGoogle, currentUser } = use(AuthContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    if (currentUser) {
+      Swal.fire({
+        icon: "error",
+        title: "Already Logged In",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+      return;
+    }
     signInUser(email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful",
+          showConfirmButton: false,
+          timer: 2000,
+        });
       })
       .catch((error) => {
         const errorCode = error.code;
-        console.log(errorCode);
+        Swal.fire({
+          icon: "error",
+          title: errorCode,
+          showConfirmButton: false,
+          timer: 2000,
+        });
       });
   };
   const handleClick = () => {
+    if (currentUser) {
+      Swal.fire({
+        icon: "error",
+        title: "Already Logged In",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+      return;
+    }
     continueWithGoogle()
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful",
+          showConfirmButton: false,
+          timer: 2000,
+        });
       })
       .catch((error) => {
         const errorCode = error.code;
-        console.log(errorCode);
+        Swal.fire({
+          icon: "error",
+          title: errorCode,
+          showConfirmButton: false,
+          timer: 2000,
+        });
       });
   };
   return (
