@@ -5,6 +5,8 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import ForgetPassword from "../pages/ForgetPassword";
+import PrivateRoute from "./PrivateRoute";
+import PendingAssignment from "../pages/PendingAssignment";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +16,14 @@ const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
+      },
+      {
+        path: "/pending-assignments",
+        element: (
+          <PrivateRoute>
+            <PendingAssignment />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",
