@@ -22,6 +22,7 @@ const AuthProvider = ({ children }) => {
         setLoading(false); // <-- Set loading false after auth state is known
       } else {
         setCurrentUser(null);
+        setLoading(false); // <-- Set loading false after auth state is unknown
       }
     });
 
