@@ -13,10 +13,13 @@ import { GoogleAuthProvider } from "firebase/auth";
 
 const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
+  const [loading, setLoading] = useState(true); // <-- Loader state
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setCurrentUser(user);
+        setLoading(false); // <-- Set loading false after auth state is known
       } else {
         setCurrentUser(null);
       }
@@ -50,6 +53,7 @@ const AuthProvider = ({ children }) => {
     currentUser,
     signOutUser,
     updateUser,
+    loading,
   };
 
   return <AuthContext value={userInfo}>{children}</AuthContext>;
