@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 const ForgetPassword = () => {
   return (
-    <div className="flex justify-center items-center py-16">
+    <div className="flex justify-center items-center py-16 px-4">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <div className="card-body">
           <h1 className="text-4xl text-center text-transparent bg-clip-text pb-1 bg-gradient-to-r from-blue-600 via-orange-400 to-pink-400 font-bold">
