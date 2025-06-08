@@ -1,17 +1,11 @@
 import React from "react";
-import { useLocation } from "react-router";
 
 const Footer = () => {
-  const location = useLocation();
   return (
     <div>
       <footer className="  footer footer-horizontal footer-center bg-gradient-to-r   from-gradient-one/90 via-gradient-two to-gradient-three/90 text-black p-10">
         <aside>
-          <img
-            className={`${location.pathname === "/" ? "animate-bounce" : ""} `}
-            src="/peersolve-big.png"
-            alt="peersolve"
-          />
+          <img src="/peersolve-big.png" alt="peersolve" />
           <p className="font-bold">
             PeerSolve Ltd.
             <br />

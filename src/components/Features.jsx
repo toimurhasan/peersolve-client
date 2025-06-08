@@ -1,5 +1,6 @@
 import React from "react";
 import { BookOpenCheck, Users, PenLine, Star } from "lucide-react";
+import { motion } from "motion/react";
 
 const Features = () => {
   return (
@@ -10,32 +11,84 @@ const Features = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Feature 1 */}
-          <div className="bg-base-200 p-6 cursor-pointer rounded-2xl shadow-md hover:shadow-xl transition">
+          <motion.div
+            drag
+            dragConstraints={{
+              left: 0,
+              top: 0,
+              right: 0,
+              bottom: 0,
+            }}
+            whileDrag={{
+              scale: 0.95,
+            }}
+            className="bg-base-200 tooltip xl:tooltip-left p-6 cursor-grab active:cursor-grabbing select-none rounded-2xl shadow-md hover:shadow-xl transition"
+            data-tip="drag me"
+          >
             <Users className="h-10 w-10 mx-auto text-indigo-500 mb-4" />
             <h3 className="text-xl font-semibold mb-2">Study with Friends</h3>
             <p>Every user is automatically a friend—build your learning squad easily.</p>
-          </div>
+          </motion.div>
 
           {/* Feature 2 */}
-          <div className="bg-base-200 p-6 cursor-pointer rounded-2xl shadow-md hover:shadow-xl transition">
+          <motion.div
+            drag
+            dragConstraints={{
+              left: 0,
+              top: 0,
+              right: 0,
+              bottom: 0,
+            }}
+            whileDrag={{
+              scale: 0.95,
+            }}
+            className="tooltip bg-base-200 p-6 cursor-grab active:cursor-grabbing select-none rounded-2xl shadow-md hover:shadow-xl transition"
+            data-tip="drag me"
+          >
             <PenLine className="h-10 w-10 mx-auto text-green-500 mb-4" />
             <h3 className="text-xl font-semibold mb-2">Create Assignments</h3>
             <p>Quickly set up group assignments and share them with everyone.</p>
-          </div>
+          </motion.div>
 
           {/* Feature 3 */}
-          <div className="bg-base-200 p-6 cursor-pointer rounded-2xl shadow-md hover:shadow-xl transition">
+          <motion.div
+            drag
+            dragConstraints={{
+              left: 0,
+              top: 0,
+              right: 0,
+              bottom: 0,
+            }}
+            whileDrag={{
+              scale: 0.95,
+            }}
+            className="tooltip tooltip-bottom bg-base-200 p-6 cursor-grab active:cursor-grabbing select-none rounded-2xl shadow-md hover:shadow-xl transition"
+            data-tip="drag me"
+          >
             <BookOpenCheck className="h-10 w-10 mx-auto text-blue-500 mb-4" />
             <h3 className="text-xl font-semibold mb-2">Submit & Track</h3>
             <p>Submit your work and keep track of your progress in real-time.</p>
-          </div>
+          </motion.div>
 
           {/* Feature 4 */}
-          <div className="bg-base-200 p-6 cursor-pointer rounded-2xl shadow-md hover:shadow-xl transition">
+          <motion.div
+            drag
+            dragConstraints={{
+              left: 0,
+              top: 0,
+              right: 0,
+              bottom: 0,
+            }}
+            whileDrag={{
+              scale: 0.95,
+            }}
+            className="tooltip tooltip-bottom xl:tooltip-right bg-base-200 p-6 cursor-grab active:cursor-grabbing select-none rounded-2xl shadow-md hover:shadow-xl transition"
+            data-tip="drag me"
+          >
             <Star className="h-10 w-10 mx-auto text-yellow-400 mb-4" />
             <h3 className="text-xl font-semibold mb-2">Peer Grading</h3>
             <p>Grade your friends' submissions and help each other improve.</p>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

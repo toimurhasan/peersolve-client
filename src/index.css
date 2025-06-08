@@ -10,9 +10,6 @@ body {
 a.active {
   background: #00000010;
 }
-.animate-bounce {
-  animation-duration: 3s;
-}
 
 @theme {
   --color-gradient-one: oklch(80.9% 0.105 251.813);

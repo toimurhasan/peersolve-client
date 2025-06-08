@@ -132,7 +132,7 @@ const Navbar = () => {
         style={{
           scaleX: scrollYProgress,
         }}
-        className="fixed h-0.5 w-full origin-left bg-gradient-to-r  from-gradient-three via-gradient-two to-gradient-one"
+        className="fixed h-0.5 w-full origin-left bg-gradient-to-r z-10  from-gradient-three via-gradient-two to-gradient-one"
       ></motion.div>
     </>
   );
