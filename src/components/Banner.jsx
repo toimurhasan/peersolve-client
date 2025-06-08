@@ -32,12 +32,12 @@ const Banner = () => {
           <img
             src="https://i.ibb.co/jPsZKBpn/banner01.webp"
             alt="Group Study"
-            className="w-full max-w-md mx-auto md:mx-0 rounded-3xl shadow-2xl border-l-2 border-orange-500"
+            className="w-full max-w-md mx-auto md:mx-0 rounded-3xl shadow-2xl border-l-2 border-gradient-two"
           />
           <img
             src="https://i.ibb.co/MxHhh6Cp/banner02.jpg"
             alt="Group Study"
-            className="-mt-30 w-full max-w-md ml-10 hidden sm:block rounded-3xl border-r-2 border-blue-500 shadow-2xl"
+            className="-mt-30 w-full max-w-md ml-10 hidden sm:block rounded-3xl border-r-2 border-gradient-one shadow-2xl"
           />
         </div>
       </div>

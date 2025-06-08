@@ -37,9 +37,13 @@ const Navbar = () => {
       <li>
         <NavLink to={"/assignments"}>Assignments</NavLink>
       </li>
-      <li>
-        <NavLink to={"/pending-assignments"}>Pending Assignments</NavLink>
-      </li>
+      {currentUser && (
+        <>
+          <li>
+            <NavLink to={"/pending-assignments"}>Pending Assignments</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   return (
@@ -85,15 +89,31 @@ const Navbar = () => {
             <button onClick={handleClick} className="btn">
               Sign Out
             </button>
-            <div
-              data-tooltip-id="my-tooltip"
-              data-tooltip-content={userName}
-              data-tooltip-place="bottom-start"
-              className="avatar cursor-pointer"
-            >
-              <div className="w-12 rounded-full border-gray-400 shadow-2xl  border-[1px]">
-                <img src={avatar} />
+
+            <div className="dropdown  dropdown-end">
+              <div
+                tabIndex={0}
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content={userName}
+                data-tooltip-place="bottom-start"
+                className="avatar cursor-pointer"
+              >
+                <div className="w-12 rounded-full border-gray-400 shadow-2xl  border-[1px]">
+                  <img src={avatar} />
+                </div>
               </div>
+
+              <ul
+                tabIndex={0}
+                className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+              >
+                <li>
+                  <Link>Create Assignments</Link>
+                </li>
+                <li>
+                  <Link>My Attempted Assignments</Link>
+                </li>
+              </ul>
             </div>
           </>
         ) : (
