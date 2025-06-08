@@ -13,3 +13,22 @@ a.active {
 .animate-bounce {
   animation-duration: 3s;
 }
+
+@theme {
+  --color-gradient-one: oklch(80.9% 0.105 251.813);
+  --color-gradient-two: oklch(90.1% 0.076 70.697);
+  --color-gradient-three: oklch(82.3% 0.12 346.018);
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  --color-gradient-one: oklch(80.9% 0.105 251.813);
+  --color-gradient-two: oklch(90.1% 0.076 70.697);
+  --color-gradient-three: oklch(82.3% 0.12 346.018);
+}
+@plugin "daisyui/theme" {
+  name: "dark";
+  --color-gradient-one: oklch(42.4% 0.199 265.638);
+  --color-gradient-two: oklch(64.6% 0.222 41.116);
+  --color-gradient-three: oklch(45.9% 0.187 3.815);
+}

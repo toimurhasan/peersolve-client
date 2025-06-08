@@ -102,7 +102,7 @@ const Login = () => {
 
             <button
               type="submit"
-              className="btn hover:bg-gradient-to-l group  bg-gradient-to-r from-blue-400 hover:shadow-lg   via-orange-600 to-pink-400 text-white rounded-full  mt-4"
+              className="btn hover:bg-gradient-to-l group  bg-gradient-to-r from-blue-500 hover:shadow-lg   via-orange-400 to-pink-500  rounded-full  mt-4"
             >
               <span className="group-hover:-translate-y-0.5 transition">Login</span>
             </button>
@@ -111,7 +111,7 @@ const Login = () => {
           <button
             onClick={handleClick}
             type="submit"
-            className="btn hover:bg-gradient-to-l group  bg-gradient-to-r from-gray-400 hover:shadow-lg   via-gray-600 to-gray-400 text-white rounded-full "
+            className="btn hover:bg-gradient-to-l group  bg-gradient-to-r from-gray-400 hover:shadow-lg   via-gray-500 to-gray-400 rounded-full "
           >
             <span className="group-hover:-translate-y-0.5 transition flex items-center gap-2">
               <FaGoogle /> <span>Continue With Google</span>

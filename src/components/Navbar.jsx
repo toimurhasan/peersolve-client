@@ -43,7 +43,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-gradient-to-r text-black from-blue-200/95 via-orange-100 to-pink-200/95 shadow-sm  fixed top-0 z-10 ">
+    <div className="navbar bg-gradient-to-r  from-gradient-one/90 via-gradient-two to-gradient-three/90 shadow-sm  fixed top-0 z-10 ">
       <div className="navbar-start gap-1">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn  rounded-full px-2.5 lg:hidden">
