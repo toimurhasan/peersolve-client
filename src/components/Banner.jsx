@@ -1,5 +1,7 @@
+import { scale } from "motion";
 import React from "react";
 import { Typewriter } from "react-simple-typewriter";
+import { motion } from "motion/react";
 
 const Banner = () => {
   return (
@@ -28,16 +30,37 @@ const Banner = () => {
         </div>
 
         {/* Image Section */}
-        <div className="flex-1">
-          <img
+        <div className="flex-1 relative">
+          <motion.img
+            animate={{
+              scale: [0.5, 1.05],
+              rotate: [0, -3],
+            }}
+            transition={{
+              duration: 0.5,
+            }}
             src="https://i.ibb.co/jPsZKBpn/banner01.webp"
             alt="Group Study"
-            className="w-full max-w-md mx-auto md:mx-0 rounded-3xl shadow-2xl border-l-2 border-gradient-two"
+            className="sticky top-18 cursor-not-allowed w-full max-w-md mx-auto md:mx-0 rounded-3xl shadow-2xl border-2 border-gray-200"
           />
-          <img
-            src="https://i.ibb.co/MxHhh6Cp/banner02.jpg"
+          <motion.img
+            drag
+            dragConstraints={{
+              left: -50,
+              right: 0,
+              top: -10,
+              bottom: 10,
+            }}
+            animate={{
+              scale: [0.7, 1.05],
+              rotate: [0, 3],
+            }}
+            transition={{
+              duration: 0.5,
+            }}
+            src="https://i.ibb.co/Y4JtsxD5/aa.jpg"
             alt="Group Study"
-            className="-mt-30 w-full max-w-md ml-10 hidden sm:block rounded-3xl border-r-2 border-gradient-one shadow-2xl"
+            className="w-full cursor-grab active:cursor-grabbing ml-3 h-64 object-cover  -mt-28 max-w-md hidden sm:block rounded-3xl  border-2 border-gray-200 shadow-2xl"
           />
         </div>
       </div>
