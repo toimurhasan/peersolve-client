@@ -8,7 +8,7 @@ const CreateAssignments = () => {
 
   return (
     <div className="py-10">
-      <form className="max-w-2xl mx-auto p-8 rounded-2xl shadow-xl grid grid-cols-1 md:grid-cols-2 gap-6">
+      <form className="max-w-2xl mx-auto p-8 rounded-2xl sm:shadow-xl grid grid-cols-1 md:grid-cols-2 gap-6">
         <h1 className="text-4xl col-span-full text-center text-transparent bg-clip-text pb-1 bg-gradient-to-r from-blue-600 via-orange-400 to-pink-400 font-bold">
           Create Assignment
         </h1>
@@ -21,7 +21,7 @@ const CreateAssignments = () => {
             className="input w-full input-bordered focus:outline-transparent focus:border-gray-400 focus:shadow-xl"
           />
         </div>
-        <div className="grid grid-cols-3 col-span-full gap-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 col-span-full gap-6 sm:gap-10">
           <div className="form-control ">
             <label className="label font-semibold block">Due Date</label>
             <DatePicker
@@ -39,7 +39,7 @@ const CreateAssignments = () => {
               <option value="hard">Hard</option>
             </select>
           </div>
-          <div className="form-control">
+          <div className="form-control col-span-full sm:col-span-1">
             <label className="label font-semibold">Marks</label>
             <input
               type="number"
