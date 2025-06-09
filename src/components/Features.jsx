@@ -12,18 +12,14 @@ const Features = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Feature 1 */}
           <motion.div
-            drag
-            dragConstraints={{
-              left: 0,
-              top: 0,
-              right: 0,
-              bottom: 0,
+            whileHover={{
+              rotate: -5,
+              scale: 1.01,
             }}
-            whileDrag={{
-              scale: 0.95,
+            transition={{
+              duration: 0.01,
             }}
-            className="bg-base-200 tooltip xl:tooltip-left p-6 cursor-grab active:cursor-grabbing select-none rounded-2xl shadow-md hover:shadow-xl transition"
-            data-tip="drag me"
+            className="bg-base-200  p-6 cursor-pointer select-none rounded-2xl shadow-md hover:shadow-xl transition"
           >
             <Users className="h-10 w-10 mx-auto text-indigo-500 mb-4" />
             <h3 className="text-xl font-semibold mb-2">Study with Friends</h3>
@@ -32,18 +28,14 @@ const Features = () => {
 
           {/* Feature 2 */}
           <motion.div
-            drag
-            dragConstraints={{
-              left: 0,
-              top: 0,
-              right: 0,
-              bottom: 0,
+            whileHover={{
+              rotate: -5,
+              scale: 1.01,
             }}
-            whileDrag={{
-              scale: 0.95,
+            transition={{
+              duration: 0.01,
             }}
-            className="tooltip bg-base-200 p-6 cursor-grab active:cursor-grabbing select-none rounded-2xl shadow-md hover:shadow-xl transition"
-            data-tip="drag me"
+            className=" bg-base-200 p-6 cursor-pointer select-none rounded-2xl shadow-md hover:shadow-xl transition"
           >
             <PenLine className="h-10 w-10 mx-auto text-green-500 mb-4" />
             <h3 className="text-xl font-semibold mb-2">Create Assignments</h3>
@@ -52,18 +44,14 @@ const Features = () => {
 
           {/* Feature 3 */}
           <motion.div
-            drag
-            dragConstraints={{
-              left: 0,
-              top: 0,
-              right: 0,
-              bottom: 0,
+            whileHover={{
+              rotate: -5,
+              scale: 1.01,
             }}
-            whileDrag={{
-              scale: 0.95,
+            transition={{
+              duration: 0.01,
             }}
-            className="tooltip tooltip-bottom bg-base-200 p-6 cursor-grab active:cursor-grabbing select-none rounded-2xl shadow-md hover:shadow-xl transition"
-            data-tip="drag me"
+            className="bg-base-200 p-6 cursor-pointer select-none rounded-2xl shadow-md hover:shadow-xl transition"
           >
             <BookOpenCheck className="h-10 w-10 mx-auto text-blue-500 mb-4" />
             <h3 className="text-xl font-semibold mb-2">Submit & Track</h3>
@@ -72,18 +60,14 @@ const Features = () => {
 
           {/* Feature 4 */}
           <motion.div
-            drag
-            dragConstraints={{
-              left: 0,
-              top: 0,
-              right: 0,
-              bottom: 0,
+            whileHover={{
+              rotate: -5,
+              scale: 1.01,
             }}
-            whileDrag={{
-              scale: 0.95,
+            transition={{
+              duration: 0.01,
             }}
-            className="tooltip tooltip-bottom xl:tooltip-right bg-base-200 p-6 cursor-grab active:cursor-grabbing select-none rounded-2xl shadow-md hover:shadow-xl transition"
-            data-tip="drag me"
+            className=" xl:tooltip-right bg-base-200 p-6 cursor-pointer select-none rounded-2xl shadow-md hover:shadow-xl transition"
           >
             <Star className="h-10 w-10 mx-auto text-yellow-400 mb-4" />
             <h3 className="text-xl font-semibold mb-2">Peer Grading</h3>
