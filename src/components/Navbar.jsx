@@ -94,7 +94,7 @@ const Navbar = () => {
                 Sign Out
               </button>
 
-              <div className="dropdown  dropdown-end">
+              <div className="dropdown   dropdown-end">
                 <div
                   tabIndex={0}
                   data-tooltip-id="my-tooltip"
@@ -112,7 +112,7 @@ const Navbar = () => {
                   className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
                 >
                   <li>
-                    <Link>Create Assignments</Link>
+                    <Link to={"/create-assignments"}>Create Assignments</Link>
                   </li>
                   <li>
                     <Link>My Attempted Assignments</Link>
@@ -132,7 +132,7 @@ const Navbar = () => {
         style={{
           scaleX: scrollYProgress,
         }}
-        className="fixed h-0.5 w-full origin-left bg-gradient-to-r z-10  from-gradient-three via-gradient-two to-gradient-one"
+        className="fixed h-0.5 w-full origin-left z-[1] bg-gradient-to-r  from-gradient-three via-gradient-two to-gradient-one"
       ></motion.div>
     </>
   );
