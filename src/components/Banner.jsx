@@ -30,38 +30,42 @@ const Banner = () => {
         </div>
 
         {/* Image Section */}
-        <div className="flex-1 relative">
-          <motion.img
-            animate={{
-              scale: [0.5, 1.05],
-              rotate: [0, -3],
-            }}
-            transition={{
-              duration: 0.5,
-            }}
-            src="https://i.ibb.co/jPsZKBpn/banner01.webp"
-            alt="Group Study"
-            className="sticky top-18 cursor-not-allowed w-full max-w-md mx-auto md:mx-0 rounded-3xl shadow-2xl border-2 border-gray-200"
-          />
-          <motion.img
-            drag
-            dragConstraints={{
-              left: -50,
-              right: 0,
-              top: -10,
-              bottom: 10,
-            }}
-            animate={{
-              scale: [0.7, 1.05],
-              rotate: [0, 3],
-            }}
-            transition={{
-              duration: 0.5,
-            }}
-            src="https://i.ibb.co/Y4JtsxD5/aa.jpg"
-            alt="Group Study"
-            className="w-full cursor-grab active:cursor-grabbing ml-3 h-64 object-cover  -mt-28 max-w-md hidden sm:block rounded-3xl  border-2 border-gray-200 shadow-2xl"
-          />
+        <div className="flex-1">
+          <div>
+            <motion.img
+              animate={{
+                scale: [0.5, 1.04],
+                rotate: [0, -3],
+              }}
+              transition={{
+                duration: 0.5,
+              }}
+              src="https://i.ibb.co/jPsZKBpn/banner01.webp"
+              alt="Group Study"
+              className="sticky top-18 cursor-not-allowed w-full max-w-md mx-auto md:mx-0 rounded-3xl shadow-2xl border-2 border-gray-200"
+            />
+          </div>
+          <div className="tooltip tooltip-bottom" data-tip="i am dragable!">
+            <motion.img
+              drag
+              dragConstraints={{
+                left: -50,
+                right: 0,
+                top: -10,
+                bottom: 10,
+              }}
+              animate={{
+                scale: [0.7, 1.06],
+                rotate: [0, 3],
+              }}
+              transition={{
+                duration: 0.5,
+              }}
+              src="https://i.ibb.co/Y4JtsxD5/aa.jpg"
+              alt="Group Study"
+              className="w-full cursor-grab active:cursor-grabbing ml-3 h-64 object-cover  -mt-28 max-w-md hidden sm:block rounded-3xl  border-2 border-gray-200 shadow-2xl"
+            />
+          </div>
         </div>
       </div>
     </section>
