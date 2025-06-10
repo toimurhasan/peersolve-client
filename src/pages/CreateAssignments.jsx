@@ -6,9 +6,20 @@ import "react-datepicker/dist/react-datepicker.css";
 const CreateAssignments = () => {
   const [dueDate, setDueDate] = useState(new Date());
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const assignmentData = Object.fromEntries(formData.entries());
+    console.log(assignmentData);
+  };
+
   return (
     <div className="py-10">
-      <form className="max-w-2xl mx-auto p-8 rounded-2xl sm:shadow-xl grid grid-cols-1 md:grid-cols-2 gap-6">
+      <form
+        onSubmit={handleSubmit}
+        className="max-w-2xl mx-auto p-8 rounded-2xl sm:shadow-xl grid grid-cols-1 md:grid-cols-2 gap-6"
+      >
         <h1 className="text-4xl col-span-full text-center text-transparent bg-clip-text pb-1 bg-gradient-to-r from-blue-600 via-orange-400 to-pink-400 font-bold">
           Create Assignment
         </h1>
@@ -16,6 +27,7 @@ const CreateAssignments = () => {
         <div className="form-control col-span-full">
           <label className="label font-semibold block">Title</label>
           <input
+            name="title"
             type="text"
             placeholder="Enter assignment title"
             className="input w-full input-bordered focus:outline-transparent focus:border-gray-400 focus:shadow-xl"
@@ -25,6 +37,7 @@ const CreateAssignments = () => {
           <div className="form-control ">
             <label className="label font-semibold block">Due Date</label>
             <DatePicker
+              name="date"
               selected={dueDate}
               onChange={(date) => setDueDate(date)}
               className="input input-bordered focus:outline-transparent focus:border-gray-400 focus:shadow-xl"
@@ -33,7 +46,10 @@ const CreateAssignments = () => {
           </div>
           <div className="form-control">
             <label className="label font-semibold">Difficulty Level</label>
-            <select className="select select-bordered focus:outline-transparent focus:border-gray-400 focus:shadow-xl">
+            <select
+              name="difficulty"
+              className="select select-bordered focus:outline-transparent focus:border-gray-400 focus:shadow-xl"
+            >
               <option value="easy">Easy</option>
               <option value="medium">Medium</option>
               <option value="hard">Hard</option>
@@ -42,6 +58,7 @@ const CreateAssignments = () => {
           <div className="form-control col-span-full sm:col-span-1">
             <label className="label font-semibold">Marks</label>
             <input
+              name="marks"
               type="number"
               placeholder="Enter marks"
               className="input input-bordered focus:outline-transparent focus:border-gray-400 focus:shadow-xl"
@@ -52,6 +69,7 @@ const CreateAssignments = () => {
         <div className="form-control col-span-full">
           <label className="label font-semibold">Description</label>
           <textarea
+            name="description"
             placeholder="Enter description"
             className="textarea w-full textarea-bordered focus:outline-transparent focus:border-gray-400 focus:shadow-xl"
           ></textarea>
@@ -60,6 +78,7 @@ const CreateAssignments = () => {
         <div className="form-control col-span-full">
           <label className="label font-semibold block">Thumbnail Image URL</label>
           <input
+            name="image"
             type="url"
             placeholder="Enter image URL"
             className="input w-full input-bordered focus:outline-transparent focus:border-gray-400 focus:shadow-xl"
