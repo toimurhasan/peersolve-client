@@ -4,8 +4,11 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import AuthContext from "../contexts/AuthContext";
 import { toast } from "react-toastify";
+import axios from "axios";
+import { useNavigate } from "react-router";
 
 const CreateAssignments = () => {
+  const navigate = useNavigate();
   const { currentUser } = use(AuthContext);
   const [dueDate, setDueDate] = useState(new Date());
 
@@ -22,18 +25,16 @@ const CreateAssignments = () => {
     };
     console.log(assignmentData);
 
-    fetch(`${import.meta.env.VITE_API_URL}/add-assignments`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(assignmentData),
-    })
-      .then((res) => res.json())
+    axios
+      .post(`${import.meta.env.VITE_API_URL}/add-assignments`, assignmentData)
       .then((data) => {
-        if (data.insertedId) {
+        if (data.data.insertedId) {
           toast("🦄 Assignment Created Successfully");
+          navigate("/assignments");
         }
+      })
+      .catch((error) => {
+        toast.error(error.message);
       });
   };
 

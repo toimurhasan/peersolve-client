@@ -1,8 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router";
 
-const AssignmentCard = ({ assignment, onView, onUpdate, onDelete }) => {
-  const { title, marks, difficulty, description, image } = assignment;
-
+const AssignmentCard = ({ assignment, onUpdate, onDelete }) => {
+  const { title, marks, difficulty, description, image, _id } = assignment;
+  const navigate = useNavigate();
   return (
     <div className=" rounded-2xl border hover:shadow-lg cursor-pointer shadow-sm transition  border-base-200  p-4 w-full ">
       <img
@@ -22,7 +23,7 @@ const AssignmentCard = ({ assignment, onView, onUpdate, onDelete }) => {
 
       <div className="flex gap-2">
         <button
-          onClick={() => onView(assignment)}
+          onClick={() => navigate(`/assignment/${_id}`)}
           className="bg-green-500 text-white cursor-pointer px-3 py-1 rounded-lg hover:bg-green-600"
         >
           View

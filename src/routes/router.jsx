@@ -10,6 +10,8 @@ import PendingAssignment from "../pages/PendingAssignment";
 import CreateAssignments from "../pages/CreateAssignments";
 import AllAssignments from "../pages/AllAssignments";
 import Loader from "../components/Loader";
+import axios from "axios";
+import AssignmentDetails from "../pages/AssignmentDetails";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +25,7 @@ const router = createBrowserRouter([
       {
         path: "/assignments",
         hydrateFallbackElement: <Loader></Loader>,
-        loader: () => fetch("http://localhost:3000/assignments"),
+        loader: () => axios(`${import.meta.env.VITE_API_URL}/assignments`),
         Component: AllAssignments,
       },
       {
@@ -42,7 +44,10 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-
+      {
+        path: "/assignment/:id",
+        Component: AssignmentDetails,
+      },
       {
         path: "/login",
         Component: Login,
