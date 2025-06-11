@@ -16,8 +16,9 @@ const CreateAssignments = () => {
     const allFormData = Object.fromEntries(formData.entries());
     const assignmentData = {
       ...allFormData,
-      username: currentUser.displayName,
-      email: currentUser.email,
+      username: currentUser?.displayName,
+      email: currentUser?.email,
+      likedBy: [],
     };
     console.log(assignmentData);
 
@@ -49,6 +50,7 @@ const CreateAssignments = () => {
         <div className="form-control col-span-full">
           <label className="label font-semibold block">Title</label>
           <input
+            required
             name="title"
             type="text"
             placeholder="Enter assignment title"
@@ -80,6 +82,7 @@ const CreateAssignments = () => {
           <div className="form-control col-span-full sm:col-span-1">
             <label className="label font-semibold">Marks</label>
             <input
+              required
               name="marks"
               type="number"
               placeholder="Enter marks"
@@ -91,6 +94,7 @@ const CreateAssignments = () => {
         <div className="form-control col-span-full">
           <label className="label font-semibold">Description</label>
           <textarea
+            required
             name="description"
             placeholder="Enter description"
             className="textarea w-full textarea-bordered focus:outline-transparent focus:border-gray-400 focus:shadow-xl"
@@ -100,6 +104,7 @@ const CreateAssignments = () => {
         <div className="form-control col-span-full">
           <label className="label font-semibold block">Thumbnail Image URL</label>
           <input
+            required
             name="image"
             type="url"
             placeholder="Enter image URL"

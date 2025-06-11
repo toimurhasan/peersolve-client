@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import PendingAssignment from "../pages/PendingAssignment";
 import CreateAssignments from "../pages/CreateAssignments";
 import AllAssignments from "../pages/AllAssignments";
+import Loader from "../components/Loader";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/assignments",
+        hydrateFallbackElement: <Loader></Loader>,
         loader: () => fetch("http://localhost:3000/assignments"),
         Component: AllAssignments,
       },

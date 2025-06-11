@@ -51,8 +51,8 @@ const Banner = () => {
               dragConstraints={{
                 left: -50,
                 right: 0,
-                top: -10,
-                bottom: 10,
+                top: -20,
+                bottom: 0,
               }}
               animate={{
                 scale: [0.7, 1.06],
@@ -63,7 +63,7 @@ const Banner = () => {
               }}
               src="https://i.ibb.co/Y4JtsxD5/aa.jpg"
               alt="Group Study"
-              className="w-full cursor-grab active:cursor-grabbing ml-3 h-64 object-cover  -mt-28 max-w-md hidden sm:block rounded-3xl  border-2 border-gray-200 shadow-2xl"
+              className="w-full cursor-grab active:cursor-grabbing ml-3 h-64 object-cover  -mt-36 max-w-md hidden sm:block rounded-3xl  border-2 border-gray-200 shadow-2xl"
             />
           </div>
         </div>
