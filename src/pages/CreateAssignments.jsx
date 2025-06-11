@@ -1,17 +1,39 @@
 import { div } from "motion/react-client";
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import AuthContext from "../contexts/AuthContext";
+import { toast } from "react-toastify";
 
 const CreateAssignments = () => {
+  const { currentUser } = use(AuthContext);
   const [dueDate, setDueDate] = useState(new Date());
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-    const assignmentData = Object.fromEntries(formData.entries());
+    const allFormData = Object.fromEntries(formData.entries());
+    const assignmentData = {
+      ...allFormData,
+      username: currentUser.displayName,
+      email: currentUser.email,
+    };
     console.log(assignmentData);
+
+    fetch(`${import.meta.env.VITE_API_URL}/add-assignments`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(assignmentData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          toast("🦄 Assignment Created Successfully");
+        }
+      });
   };
 
   return (
