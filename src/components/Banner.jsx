@@ -42,7 +42,7 @@ const Banner = () => {
               }}
               src="https://i.ibb.co/jPsZKBpn/banner01.webp"
               alt="Group Study"
-              className="sticky top-18 cursor-not-allowed w-full max-w-md mx-auto md:mx-0 rounded-3xl shadow-2xl border-2 border-gray-200"
+              className=" sm:blur-xs sm:opacity-50 cursor-not-allowed w-full max-w-md mx-auto md:mx-0 rounded-3xl shadow-2xl border-2 border-gray-200"
             />
           </div>
           <div className="tooltip tooltip-bottom" data-tip="i am dragable!">

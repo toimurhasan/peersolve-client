@@ -8,6 +8,7 @@ import ForgetPassword from "../pages/ForgetPassword";
 import PrivateRoute from "./PrivateRoute";
 import PendingAssignment from "../pages/PendingAssignment";
 import CreateAssignments from "../pages/CreateAssignments";
+import AllAssignments from "../pages/AllAssignments";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,11 @@ const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
+      },
+      {
+        path: "/assignments",
+        loader: () => fetch("http://localhost:3000/assignments"),
+        Component: AllAssignments,
       },
       {
         path: "/pending-assignments",
@@ -34,6 +40,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+
       {
         path: "/login",
         Component: Login,
