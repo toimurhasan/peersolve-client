@@ -97,7 +97,7 @@ const CreateAssignments = () => {
           <textarea
             required
             name="description"
-            placeholder="Enter description"
+            placeholder="Enter description | (200 Words Minimum)"
             className="textarea w-full textarea-bordered focus:outline-transparent focus:border-gray-400 focus:shadow-xl"
           ></textarea>
         </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "motion/react";
+import { Helmet } from "react-helmet";
 import quotes from "quotesy";
 
 const defaultAnimation = {
@@ -11,34 +12,39 @@ const defaultAnimation = {
   },
 };
 
-const Title = () => {
+const Title = ({ title }) => {
   const state = {
     quote: quotes.random(),
   };
 
   const animatedText = `${state.quote.text} — ${state.quote.author}`;
   return (
-    <div className="text-2xl pt-1 mt-16 top-16 lg:top-0 sticky  xl:rounded-b-2xl text-center shadow-sm  bg-base-100">
-      <motion.p
-        initial="hidden"
-        animate="visible"
-        transition={{ staggerChildren: 0.06 }}
-        className="hidden lg:block italic bg-gradient-to-r text-[1.35rem] py-4 text-transparent bg-clip-text  from-blue-600 via-red-500 to-purple-500"
-      >
-        {animatedText.split("").map((char, index) => (
-          <motion.span key={index} variants={defaultAnimation}>
-            {char}
-          </motion.span>
-        ))}
-      </motion.p>
-      <div
-        className="
+    <>
+      <Helmet>
+        <title>{`${title} | PeerSolve`}</title>
+      </Helmet>
+      <div className="text-2xl pt-1 mt-16 top-16 lg:top-0 sticky  xl:rounded-b-2xl text-center shadow-sm  bg-base-100">
+        <motion.p
+          initial="hidden"
+          animate="visible"
+          transition={{ staggerChildren: 0.06 }}
+          className="hidden lg:block italic bg-gradient-to-r text-[1.35rem] py-4 text-transparent bg-clip-text  from-blue-600 via-red-500 to-purple-500"
+        >
+          {animatedText.split("").map((char, index) => (
+            <motion.span key={index} variants={defaultAnimation}>
+              {char}
+            </motion.span>
+          ))}
+        </motion.p>
+        <div
+          className="
        py-2  lg:py-3 block lg:border-t border-gradient-three border-dashed text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-orange-500 to-pink-800 
         "
-      >
-        <span>All Assignments</span>
+        >
+          <span>{title}</span>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

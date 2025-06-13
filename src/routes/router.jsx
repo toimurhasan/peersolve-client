@@ -12,6 +12,7 @@ import AllAssignments from "../pages/AllAssignments";
 import Loader from "../components/Loader";
 import axios from "axios";
 import AssignmentDetails from "../pages/AssignmentDetails";
+import MyAttemptedAssignments from "../pages/MyAttemptedAssignments";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <CreateAssignments />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-attempted-assignments",
+        element: (
+          <PrivateRoute>
+            <MyAttemptedAssignments />
           </PrivateRoute>
         ),
       },
