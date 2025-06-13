@@ -10,9 +10,10 @@ const AssignmentDetails = () => {
         <img src={image} className="rounded-2xl shadow-xl" />
       </div>
       <div className="flex-1 relative">
-        <h3 className="text-2xl bg-highlight inline-block">Title: {title}</h3>
+        <h3 className="text-2xl inline-block">{title}</h3>
+
         <div
-          className={`badge badge-soft ${
+          className={`badge rounded-full shadow-lg text-white  ${
             difficulty == "easy"
               ? ` badge-success`
               : difficulty == "medium"
@@ -22,7 +23,9 @@ const AssignmentDetails = () => {
         >
           {difficulty}
         </div>
-        <p>Due Date: {date}</p>
+        <p className="text-sm mt-2 text-justify">{description}</p>
+        <p className="mt-5">Due Date: {date}</p>
+        <p>Marks: {marks}</p>
       </div>
     </div>
   );

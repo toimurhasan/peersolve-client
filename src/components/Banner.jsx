@@ -2,8 +2,10 @@ import { scale } from "motion";
 import React from "react";
 import { Typewriter } from "react-simple-typewriter";
 import { motion } from "motion/react";
+import { useNavigate } from "react-router";
 
 const Banner = () => {
+  const navigate = useNavigate();
   return (
     <section className=" py-10 px-4">
       <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center gap-8">
@@ -24,7 +26,12 @@ const Banner = () => {
             </span>
           </h1>
           <p className="text-lg md:text-2xl mb-6">Collaborate. Learn. Achieve.</p>
-          <button className="px-6 py-3 cursor-pointer bg-indigo-600 text-white rounded-full shadow-md hover:bg-indigo-700 transition">
+          <button
+            onClick={() => {
+              navigate("/create-assignments");
+            }}
+            className="px-6 py-3 cursor-pointer bg-indigo-600 text-white rounded-full shadow-md hover:bg-indigo-700 transition"
+          >
             Start Your First Assignment
           </button>
         </div>
