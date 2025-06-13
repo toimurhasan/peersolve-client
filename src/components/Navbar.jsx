@@ -51,7 +51,7 @@ const Navbar = () => {
   );
   return (
     <>
-      <div className="navbar  xl:px-8 bg-gradient-to-r  from-gradient-one/90 via-gradient-two to-gradient-three/90 fixed top-0 z-10 ">
+      <div className="navbar  xl:px-8 bg-gradient-to-r  from-gradient-one/90 via-gradient-two to-gradient-three/90 fixed top-0 z-20 ">
         <div className="navbar-start gap-1">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn  rounded-full px-2.5 lg:hidden">
@@ -102,20 +102,22 @@ const Navbar = () => {
                   data-tooltip-place="bottom-start"
                   className="avatar cursor-pointer"
                 >
-                  <div className="w-12 rounded-full border-gray-400 shadow-2xl  border-[1px]">
+                  <div className="w-12 rounded-full  shadow-2xl  ">
                     <img src={avatar} />
                   </div>
                 </div>
 
                 <ul
                   tabIndex={0}
-                  className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+                  className="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow-sm"
                 >
                   <li>
                     <Link to={"/create-assignments"}>Create Assignments</Link>
                   </li>
                   <li>
-                    <Link to={"/my-attempted-assignments"}>My Attempted Assignments</Link>
+                    <Link to={`/my-attempted-assignments/${currentUser.email}`}>
+                      My Attempted Assignments
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -132,7 +134,7 @@ const Navbar = () => {
         style={{
           scaleX: scrollYProgress,
         }}
-        className="fixed h-0.5  rounded-full w-full origin-left z-[1] bg-progress-bar"
+        className="fixed h-0.5  rounded-full w-full origin-left z-[15] bg-progress-bar"
       ></motion.div>
     </>
   );

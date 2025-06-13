@@ -12,18 +12,30 @@ const defaultAnimation = {
   },
 };
 
+function getShortText(text, fallback) {
+  return text && text.length <= 120 ? text : fallback;
+}
+
 const Title = ({ title }) => {
   const state = {
     quote: quotes.random(),
   };
 
-  const animatedText = `${state.quote.text} — ${state.quote.author}`;
+  const generatedText = `${state.quote.text} — ${state.quote.author}`;
+
+  const animatedText = getShortText(
+    generatedText,
+    "Chaos is inherent in all compounded things. Strive on with diligence. — Buddha"
+  );
+
   return (
     <>
       <Helmet>
         <title>{`${title} | PeerSolve`}</title>
       </Helmet>
-      <div className="text-2xl pt-1 mt-16 top-16 lg:top-0 sticky  xl:rounded-b-2xl text-center shadow-sm  bg-base-100">
+      <div
+        className={`text-2xl pt-1 mt-16 top-16 lg:top-0 sticky  xl:rounded-b-2xl text-center shadow-sm  bg-base-100 z-10`}
+      >
         <motion.p
           initial="hidden"
           animate="visible"

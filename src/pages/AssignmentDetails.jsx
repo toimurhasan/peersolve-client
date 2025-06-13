@@ -10,7 +10,7 @@ const AssignmentDetails = () => {
   return (
     <>
       <Title title={title}></Title>
-      <div className="flex justify-center items-center gap-2 py-12">
+      <div className="flex flex-col lg:flex-row justify-center items-center gap-2 py-12">
         <div className="flex-1">
           <img src={image} className="rounded-2xl shadow-xl" />
         </div>

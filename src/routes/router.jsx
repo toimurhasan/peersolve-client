@@ -46,7 +46,9 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/my-attempted-assignments",
+        path: "/my-attempted-assignments/:email",
+        loader: ({ params }) =>
+          axios(`${import.meta.env.VITE_API_URL}/my-assignments/${params.email}`),
         element: (
           <PrivateRoute>
             <MyAttemptedAssignments />
@@ -55,6 +57,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/assignment/:id",
+        hydrateFallbackElement: <Loader></Loader>,
         loader: ({ params }) => axios(`${import.meta.env.VITE_API_URL}/assignment/${params.id}`),
         Component: AssignmentDetails,
       },
