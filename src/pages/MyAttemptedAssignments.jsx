@@ -4,7 +4,6 @@ import { useLoaderData } from "react-router";
 import Title from "../components/Title";
 import animationData from "../assets/no-data-found.json";
 import Lottie from "lottie-react";
-import { div } from "motion/react-client";
 
 const MyAttemptedAssignments = () => {
   const { data } = useLoaderData();

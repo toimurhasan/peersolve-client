@@ -13,7 +13,7 @@ const defaultAnimation = {
 };
 
 function getShortText(text, fallback) {
-  return text && text.length <= 120 ? text : fallback;
+  return text && text.length <= 130 ? text : fallback;
 }
 
 const Title = ({ title }) => {
@@ -25,7 +25,7 @@ const Title = ({ title }) => {
 
   const animatedText = getShortText(
     generatedText,
-    "Chaos is inherent in all compounded things. Strive on with diligence. — Buddha"
+    "Do not try to do everything. Do one thing well. — Steve Jobs"
   );
 
   return (
