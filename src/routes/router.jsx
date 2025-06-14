@@ -13,6 +13,7 @@ import Loader from "../components/Loader";
 import axios from "axios";
 import AssignmentDetails from "../pages/AssignmentDetails";
 import MyAttemptedAssignments from "../pages/MyAttemptedAssignments";
+import AssignmentInfo from "../pages/AssignmentInfo";
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
       {
         path: "/pending-assignments",
         hydrateFallbackElement: <Loader></Loader>,
-        loader: () => axios(`${import.meta.env.VITE_API_URL}/assignments`), 
+        loader: () => axios(`${import.meta.env.VITE_API_URL}/assignments`),
         element: (
           <PrivateRoute>
             <PendingAssignment />
@@ -65,6 +66,18 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AssignmentDetails></AssignmentDetails>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/assignment-info/:id",
+        hydrateFallbackElement: <Loader></Loader>,
+        errorElement: <ErrorPage></ErrorPage>,
+        loader: ({ params }) =>
+          axios(`${import.meta.env.VITE_API_URL}/assignment-info/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <AssignmentInfo></AssignmentInfo>
           </PrivateRoute>
         ),
       },
