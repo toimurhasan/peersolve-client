@@ -71,6 +71,7 @@ const AssignmentDetails = () => {
       name: currentUser?.displayName,
       title,
       marks,
+      assignmentId: _id,
     };
     console.log(submittedData);
 
