@@ -23,6 +23,8 @@ const CreateAssignments = () => {
       username: currentUser?.displayName,
       email: currentUser?.email,
       likedBy: [],
+      submittedBy: [],
+      markingComplete: [],
     };
     console.log(assignmentData);
 

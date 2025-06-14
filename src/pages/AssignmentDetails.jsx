@@ -1,22 +1,48 @@
-import React, { use, useState } from "react";
-import { useLoaderData } from "react-router";
+import React, { use, useEffect, useState } from "react";
+import { useLoaderData, useNavigate } from "react-router";
 import Title from "../components/Title";
 import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa6";
 import AuthContext from "../contexts/AuthContext";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const AssignmentDetails = () => {
+  const navigate = useNavigate();
   const { currentUser } = use(AuthContext);
 
   const { data } = useLoaderData();
-  const { _id, title, date, difficulty, marks, description, image, username, email, likedBy } =
-    data;
+  const {
+    _id,
+    title,
+    date,
+    difficulty,
+    marks,
+    description,
+    image,
+    username,
+    email,
+    likedBy,
+    submittedBy,
+  } = data;
   const [liked, setLiked] = useState(likedBy.includes(currentUser?.email));
   const [likesCount, setLikesCount] = useState(likedBy.length);
 
+  useEffect(() => {
+    setLiked(likedBy.includes(currentUser?.email));
+  }, [likedBy, currentUser]);
+
+  const takeAssigment = () => {
+    if (currentUser?.email === email) return toast.error("You can't take your own assignment");
+    if (submittedBy.includes(currentUser?.email))
+      return toast.error("Assignment already submitted!");
+    else {
+      document.getElementById("assignment-modal").showModal();
+    }
+  };
+
   const handleLike = () => {
-    if (currentUser.email === email) return alert("can't like your assignment");
+    if (currentUser?.email === email) return toast.error("You can't like your own assignment");
     axios
       .patch(`${import.meta.env.VITE_API_URL}/like/${_id}`, { email: currentUser?.email })
       .then((data) => {
@@ -25,6 +51,31 @@ const AssignmentDetails = () => {
       })
       .catch((err) => console.log(err));
   };
+
+  const [formData, setFormData] = useState({
+    googleDocsLink: "",
+    quickNote: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const submittedData = { ...formData, email: currentUser?.email, status: "pending" };
+    console.log(submittedData);
+
+    // axios request
+    // axios
+    //   .post(`${import.meta.env.VITE_API_URL}/submit-assignment/${_id}`, { submittedData })
+    //   .then((data) => {
+    //     console.log(data.data);
+    //   })
+    //   .catch((err) => console.log(err));
+  };
+
   return (
     <>
       <Title title={title}></Title>
@@ -52,10 +103,14 @@ const AssignmentDetails = () => {
           <p className="italic">{email}</p>
           <p className="text-sm mt-2 text-justify">{description}</p>
           <button
+            onClick={takeAssigment}
             type="submit"
-            className="btn btn-sm text-[1rem] text-gray-900 shadow-sm hover:bg-gradient-to-l  bg-gradient-to-r from-blue-400 hover:shadow-lg  w-full via-orange-400 to-pink-400  rounded-full  mt-4"
+            className={`${
+              (currentUser?.email === email || submittedBy.includes(currentUser?.email)) &&
+              "cursor-not-allowed"
+            } btn btn-sm text-[1rem] text-gray-900 shadow-sm hover:bg-gradient-to-l  bg-gradient-to-r from-blue-400 hover:shadow-lg  w-full via-orange-400 to-pink-400  rounded-full  mt-4`}
           >
-            <span>Submit Assignment</span>
+            <span>Take Assignment</span>
           </button>
           <p className="mt-5">Due Date: {date}</p>
           <p>Marks: {marks}</p>
@@ -71,6 +126,52 @@ const AssignmentDetails = () => {
           </div>
         </div>
       </div>
+      <dialog id="assignment-modal" className="modal">
+        <div className="modal-box">
+          <form method="dialog">
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+          </form>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Google Docs Link */}
+            <div className="form-control">
+              <label className="label w-full">
+                <span className="label-text font-semibold">Google Docs Link</span>
+              </label>
+              <input
+                type="url"
+                name="googleDocsLink"
+                value={formData.googleDocsLink}
+                onChange={handleChange}
+                placeholder="example: https://docs.google.com/abcd"
+                className="input input-bordered w-full"
+                required
+              />
+            </div>
+
+            {/* Quick Note */}
+            <div className="form-control">
+              <label className="label w-full">
+                <span className="label-text font-semibold">Quick Note</span>
+              </label>
+              <textarea
+                name="quickNote"
+                value={formData.quickNote}
+                onChange={handleChange}
+                placeholder="Any comment or message..."
+                className="textarea textarea-bordered w-full"
+                rows={4}
+              />
+            </div>
+
+            {/* Submit Button */}
+            <div className="text-center">
+              <button type="submit" className="btn btn-primary px-8">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </dialog>
     </>
   );
 };

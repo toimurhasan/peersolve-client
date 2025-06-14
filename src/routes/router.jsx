@@ -59,7 +59,11 @@ const router = createBrowserRouter([
         path: "/assignment/:id",
         hydrateFallbackElement: <Loader></Loader>,
         loader: ({ params }) => axios(`${import.meta.env.VITE_API_URL}/assignment/${params.id}`),
-        Component: AssignmentDetails,
+        element: (
+          <PrivateRoute>
+            <AssignmentDetails></AssignmentDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",

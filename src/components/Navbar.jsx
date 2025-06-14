@@ -1,5 +1,5 @@
 import React, { use } from "react";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import ThemeToggle from "./ThemeToggle";
 import AuthContext from "../contexts/AuthContext";
 import Swal from "sweetalert2";
@@ -8,6 +8,7 @@ import { motion, useScroll } from "motion/react";
 
 const Navbar = () => {
   const { scrollYProgress } = useScroll();
+  const navigate = useNavigate();
 
   const { currentUser, signOutUser } = use(AuthContext);
   const avatar = currentUser?.photoURL;
@@ -21,6 +22,7 @@ const Navbar = () => {
           showConfirmButton: false,
           timer: 2000,
         });
+        navigate("/");
       })
       .catch(() => {
         Swal.fire({
