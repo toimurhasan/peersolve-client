@@ -10,7 +10,7 @@ const AllAssignments = () => {
   return (
     <>
       <Title title={"All Assignments"}></Title>
-      <div className="mx-8 my-16  grid sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
+      <div className="mx-2 xl:mx-0 my-16  grid sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
         {assignments?.map((assignment) => (
           <AssignmentCard assignment={assignment} key={assignment._id}></AssignmentCard>
         ))}

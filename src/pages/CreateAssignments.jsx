@@ -121,7 +121,7 @@ const CreateAssignments = () => {
           <div className="col-span-full">
             <button
               type="submit"
-              className="btn hover:bg-gradient-to-l group  bg-gradient-to-r from-blue-500 hover:shadow-lg  w-full via-orange-400 to-pink-500  rounded-full  mt-4"
+              className="btn hover:bg-gradient-to-l group text-black  bg-gradient-to-r from-blue-400 hover:shadow-lg  w-full via-orange-400 to-pink-400  rounded-full  mt-4"
             >
               <span className="group-hover:-translate-y-0.5 transition">Create Assignment</span>
             </button>
