@@ -4,6 +4,7 @@ import { useLoaderData } from "react-router";
 import Title from "../components/Title";
 import animationData from "../assets/no-data-found.json";
 import Lottie from "lottie-react";
+import SubmittedAssignmentCard from "../components/SubmittedAssignmentCard";
 
 const MyAttemptedAssignments = () => {
   const { data } = useLoaderData();
@@ -16,9 +17,12 @@ const MyAttemptedAssignments = () => {
           <Lottie className="w-96" animationData={animationData} loop={true} />
         </div>
       ) : (
-        <div className="mx-8 my-16  grid sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
+        <div className="mx-2 xl:mx-0 my-16  grid sm:grid-cols-2 lg:grid-cols-3 gap-6  ">
           {assignments?.map((assignment) => (
-            <AssignmentCard assignment={assignment} key={assignment._id}></AssignmentCard>
+            <SubmittedAssignmentCard
+              assignment={assignment}
+              key={assignment._id}
+            ></SubmittedAssignmentCard>
           ))}
         </div>
       )}
