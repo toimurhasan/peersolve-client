@@ -1,29 +1,22 @@
-import React, { use, useEffect, useState } from "react";
+import React, { use } from "react";
 import { useNavigate } from "react-router";
 import AuthContext from "../contexts/AuthContext";
 
 const SubmittedAssignmentCard = ({ assignment }) => {
   const { currentUser } = use(AuthContext);
-  const { markingComplete, title, marks } = assignment;
-  const [index, setIndex] = useState();
-  const [status, setStatus] = useState("pending");
+  const { markingComplete, submittedBy, title, marks } = assignment;
 
-  // get feedback from markingComplete
-  const feedback = "";
+  // Check if current user is in submittedBy
+  const hasSubmitted = submittedBy.some((entry) => entry.email === currentUser?.email);
 
-  useEffect(() => {
-    markingComplete.forEach((mark, index) => {
-      Object.entries(mark).forEach(([key, value]) => {
-        if (value === "2imur.hasan@gmail.comd") {
-          setStatus("completed");
-          setIndex(index);
-        }
-      });
-    });
-  }, []);
+  // Find marking info for current user
+  const markInfo = markingComplete.find((entry) => entry.email === currentUser?.email);
 
-  const assignmentMark = markingComplete[index]?.mark;
-  //   console.log(assignmentMark);
+  const givenMark = markInfo?.givenMark;
+  const feedback = markInfo?.feedback;
+
+  // Determine status
+  const status = hasSubmitted && markInfo ? "completed" : "pending";
 
   // Tailwind-friendly badge colours by status
   const badgeClasses = {
@@ -39,19 +32,19 @@ const SubmittedAssignmentCard = ({ assignment }) => {
 
         <p className="text-sm mb-2 text-center flex flex-col ">
           <span className="text-sm font-medium">Total Marks: {marks}</span>
-          {assignmentMark && (
-            <span className="font-medium">Your Obtained Marks:&nbsp; {assignmentMark}</span>
-          )}
+          {givenMark && <span className="font-medium">Your Obtained Marks:&nbsp; {givenMark}</span>}
         </p>
 
         {/* Show feedback only if it exists */}
         {feedback && (
-          <p className="text-sm text-gray-600">
-            <span className="font-medium">Feedback:&nbsp;</span>
-            {feedback}
+          <p className="text-sm text-gray-600 mb-4">
+            <span className="font-medium text-center block text-my-gray">Feedback:</span>
+            <span className="p-4 bg-base-200 block text-my-gray rounded-xl"> {feedback}</span>
           </p>
         )}
       </div>
+
+      {/* ---------- Status badge ---------- */}
       <div className="flex justify-center items-center">
         <span
           className={`text-sm px-3 py-1 rounded-full capitalize ${
