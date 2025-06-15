@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.init";
 import { GoogleAuthProvider } from "firebase/auth";
+import axios from "axios";
 
 const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
@@ -19,6 +20,14 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setCurrentUser(user);
+
+        // jwt token
+        if (user?.email) {
+          axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email: user?.email }).then((res) => {
+            localStorage.setItem("token", res.data.token);
+          });
+        }
+
         setLoading(false); // <-- Set loading false after auth state is known
       } else {
         setCurrentUser(null);
@@ -39,6 +48,7 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, provider);
   };
   const signOutUser = () => {
+    localStorage.removeItem("token");
     return signOut(auth);
   };
   const updateUser = (displayName, photoURL) => {
