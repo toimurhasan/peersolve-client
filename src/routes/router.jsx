@@ -14,6 +14,9 @@ import axios from "axios";
 import AssignmentDetails from "../pages/AssignmentDetails";
 import MyAttemptedAssignments from "../pages/MyAttemptedAssignments";
 import AssignmentInfo from "../pages/AssignmentInfo";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+
+const axiosSecure = useAxiosSecure();
 
 const router = createBrowserRouter([
   {
@@ -62,12 +65,7 @@ const router = createBrowserRouter([
         path: "/assignment/:id",
         hydrateFallbackElement: <Loader></Loader>,
         errorElement: <ErrorPage></ErrorPage>,
-        loader: ({ params }) =>
-          axios(`${import.meta.env.VITE_API_URL}/assignment/${params.id}`, {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }),
+        loader: ({ params }) => axiosSecure(`/assignment/${params.id}`),
         element: (
           <PrivateRoute>
             <AssignmentDetails></AssignmentDetails>
