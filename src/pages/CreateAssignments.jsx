@@ -44,7 +44,7 @@ const CreateAssignments = () => {
   return (
     <>
       <Helmet>
-        <title>Home | PeerSolve</title>
+        <title>Create Assignment | PeerSolve</title>
       </Helmet>
       <div className="py-10">
         <form
