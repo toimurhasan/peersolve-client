@@ -54,8 +54,8 @@ const AllAssignments = () => {
 
   return (
     <>
-       <Title title={"All Assignments"} />
-      <div className="py-6 flex justify-center max-w-2xl mx-auto px-2">
+      <Title title={"All Assignments"} />
+      <div className="py-6 flex justify-between items-center gap-4 mx-auto px-2 xl:px-0">
         <label className="input rounded-xl w-full border-my-gray-2 no-outline flex items-center gap-2">
           <svg
             className="h-[1em] opacity-50"
@@ -81,6 +81,22 @@ const AllAssignments = () => {
             className="w-full outline-none bg-transparent"
           />
         </label>
+        <div className="dropdown dropdown-end">
+          <div tabIndex={0} role="button" className="btn w-36 rounded-xl">
+            Difficulty Levels
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+          >
+            <li>
+              <a>Item 1</a>
+            </li>
+            <li>
+              <a>Item 2</a>
+            </li>
+          </ul>
+        </div>
       </div>
 
       {loading ? (
