@@ -60,4 +60,4 @@ const Title = ({ title }) => {
   );
 };
 
-export default Title;
+export default React.memo(Title);
