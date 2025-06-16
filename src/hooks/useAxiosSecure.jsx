@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -18,7 +18,14 @@ const useAxiosSecure = () => {
   axiosInstance.interceptors.response.use(
     (res) => res,
     (err) => {
-      toast.error(err.response.data.message);
+      // console.log(err);
+      // toast.error(err.response.data.message);
+      Swal.fire({
+        icon: "error",
+        title: err.response.data.message,
+        showConfirmButton: false,
+        timer: 2000,
+      });
     }
   );
 

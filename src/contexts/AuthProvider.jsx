@@ -55,7 +55,6 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, provider);
   };
   const signOutUser = () => {
-    localStorage.removeItem("token");
     return signOut(auth);
   };
   const updateUser = (displayName, photoURL) => {
