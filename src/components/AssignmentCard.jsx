@@ -3,7 +3,7 @@ import { FaHeart } from "react-icons/fa";
 import { useNavigate } from "react-router";
 import AuthContext from "../contexts/AuthContext";
 
-const AssignmentCard = ({ assignment, onUpdate, onDelete }) => {
+const AssignmentCard = ({ assignment, onDelete }) => {
   const { currentUser } = use(AuthContext);
   const { title, marks, difficulty, description, image, _id, likedBy, email } = assignment;
   const [btnAvailable, setBtnAvailable] = useState(false);
@@ -43,7 +43,7 @@ const AssignmentCard = ({ assignment, onUpdate, onDelete }) => {
           {btnAvailable && (
             <>
               <button
-                onClick={() => onUpdate(assignment)}
+                onClick={() => navigate(`/update-assignment/${_id}`)}
                 className="bg-yellow-500 text-white cursor-pointer px-3 py-1 rounded-lg hover:bg-yellow-600"
               >
                 Update

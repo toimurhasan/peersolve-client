@@ -15,6 +15,7 @@ import AssignmentDetails from "../pages/AssignmentDetails";
 import MyAttemptedAssignments from "../pages/MyAttemptedAssignments";
 import AssignmentInfo from "../pages/AssignmentInfo";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import UpdateAssignment from "../pages/UpdateAssignment";
 
 const axiosSecure = useAxiosSecure();
 
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
             <AssignmentInfo></AssignmentInfo>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/update-assignment/:id",
+        Component: UpdateAssignment,
       },
       {
         path: "/login",
