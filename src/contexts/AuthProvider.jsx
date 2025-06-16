@@ -23,9 +23,16 @@ const AuthProvider = ({ children }) => {
 
         // jwt token
         if (user?.email) {
-          axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email: user?.email }).then((res) => {
-            localStorage.setItem("token", res.data.token);
-          });
+          axios
+            .post(
+              `${import.meta.env.VITE_API_URL}/jwt`,
+              { email: user?.email },
+              { withCredentials: true }
+            )
+            .then(() => {
+              // localStorage.setItem("token", res.data.token);
+              // console.log(res.data);
+            });
         }
 
         setLoading(false); // <-- Set loading false after auth state is known

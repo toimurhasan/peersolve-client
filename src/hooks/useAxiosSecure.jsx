@@ -4,14 +4,15 @@ import { toast } from "react-toastify";
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
+  withCredentials: true,
 });
 
 const useAxiosSecure = () => {
   // intercept request
-  axiosInstance.interceptors.request.use((config) => {
-    config.headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
-    return config;
-  });
+  // axiosInstance.interceptors.request.use((config) => {
+  //   config.headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
+  //   return config;
+  // });
 
   // intercept response
   axiosInstance.interceptors.response.use(
