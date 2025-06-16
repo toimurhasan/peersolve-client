@@ -18,7 +18,7 @@ const AssignmentCard = ({ assignment, onDelete }) => {
         <img
           src={image}
           alt="Assignment thumbnail"
-          className="w-full h-40 bg-gray-100 object-cover rounded-xl mb-3"
+          className="w-full h-56 bg-gray-100 object-cover rounded-xl mb-3"
         />
         <h2 className="text-xl font-semibold mb-1">{title}</h2>
         <p className="text-sm text-gray-500 mb-2 line-clamp-2">{description}</p>

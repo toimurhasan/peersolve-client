@@ -6,6 +6,7 @@ import Lottie from "lottie-react";
 import animationData from "../assets/no-data-found.json";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const AllAssignments = () => {
   const { data } = useLoaderData();
@@ -28,7 +29,7 @@ const AllAssignments = () => {
           });
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(err.message));
   };
 
   return (

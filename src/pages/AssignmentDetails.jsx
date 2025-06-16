@@ -73,7 +73,7 @@ const AssignmentDetails = () => {
       marks,
       assignmentId: _id,
     };
-    console.log(submittedData);
+    // console.log(submittedData);
 
     axios
       .post(`${import.meta.env.VITE_API_URL}/submit-assignment/${_id}`, { submittedData })
@@ -88,7 +88,7 @@ const AssignmentDetails = () => {
           });
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(err.message));
   };
 
   return (

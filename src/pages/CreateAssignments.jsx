@@ -26,7 +26,7 @@ const CreateAssignments = () => {
       submittedBy: [],
       markingComplete: [],
     };
-    console.log(assignmentData);
+    // console.log(assignmentData);
 
     axios
       .post(`${import.meta.env.VITE_API_URL}/add-assignments`, assignmentData)

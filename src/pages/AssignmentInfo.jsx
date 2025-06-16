@@ -14,7 +14,7 @@ const AssignmentInfo = () => {
     const givenMark = form.givenMark.value;
     const feedback = form.feedback.value;
     const submittedData = { givenMark, feedback, email };
-    console.log(submittedData);
+    // console.log(submittedData);
     axios
       .patch(`${import.meta.env.VITE_API_URL}/submit-mark/${assignmentId}`, submittedData)
       .then(() => {
