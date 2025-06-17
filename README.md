@@ -1,12 +1,43 @@
-# React + Vite
+# PeerSolve
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**PeerSolve** is a collaborative web application designed to enhance group study experiences. Every registered user is automatically connected as a peer, creating a friendly and inclusive academic environment where users can assign, complete, and evaluate each other’s work.
 
-Currently, two official plugins are available:
+## 🌐 Live URL
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[https://peer-solve.web.app](https://peer-solve.web.app)
 
-## Expanding the ESLint configuration
+## 🎯 Purpose
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The goal of PeerSolve is to make online group study more structured, interactive, and rewarding. By allowing users to both contribute and assess assignments, the platform fosters active participation and shared growth.
+
+## 🔑 Key Features
+
+- 🔐 **User Authentication** via Firebase (with password reset support)
+- 🔄 **JWT-based Backend Authentication** for secure data access
+- 📚 **Assignment Management** – Create, edit, submit, and delete assignments
+- ✅ **Peer Grading** – Users can evaluate and leave feedback on friends' submissions
+- 🌗 **Light & Dark Mode** toggle for personalized UI experience
+- 🔍 **Search and Filter** assignments based on title or keywords
+- 🎨 **Responsive & Interactive UI** with smooth animations
+- 🧠 **Motivational Quotes** to encourage learning momentum
+
+## 📦 NPM Packages Used
+
+- `axios`
+- `daisyui`
+- `firebase`
+- `lottie-react`
+- `lucide-react`
+- `motion`
+- `quotesy`
+- `react`
+- `react-datepicker`
+- `react-dom`
+- `react-helmet`
+- `react-icons`
+- `react-router`
+- `react-simple-typewriter`
+- `react-toastify`
+- `react-tooltip`
+- `sweetalert2`
+- `tailwindcss`
