@@ -103,9 +103,9 @@ const CreateAssignments = () => {
             <label className="label font-semibold">Description</label>
             <textarea
               required
-              minLength={60}
+              minLength={100}
               name="description"
-              placeholder="Enter description | (200 Words Minimum)"
+              placeholder="Enter description"
               className="textarea w-full textarea-bordered focus:outline-transparent focus:border-gray-400 focus:shadow-xl"
             ></textarea>
           </div>
