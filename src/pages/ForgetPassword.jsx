@@ -1,7 +1,34 @@
-import React from "react";
-import { Link } from "react-router";
+import React, { use } from "react";
+import { Link, useNavigate } from "react-router";
+import AuthContext from "../contexts/AuthContext";
+import Swal from "sweetalert2";
 
 const ForgetPassword = () => {
+  const { forgetPassword } = use(AuthContext);
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    forgetPassword(email)
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Please check your email",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        Swal.fire({
+          icon: "error",
+          title: errorCode,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      });
+  };
   return (
     <div className="flex justify-center items-center py-16 px-4">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -9,9 +36,10 @@ const ForgetPassword = () => {
           <h1 className="text-4xl text-center text-transparent bg-clip-text pb-1 bg-gradient-to-r from-blue-600 via-orange-400 to-pink-400 font-bold">
             Reset Password
           </h1>
-          <form className="fieldset">
+          <form onSubmit={handleSubmit} className="fieldset">
             <label className="label">Email</label>
             <input
+              name="email"
               type="email"
               className="input w-full focus:outline-transparent focus:border-gray-400 focus:shadow-xl"
               placeholder="Email"

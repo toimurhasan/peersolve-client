@@ -7,6 +7,7 @@ import animationData from "../assets/no-data-found.json";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import Loader from "../components/Loader";
 
 const AllAssignments = () => {
   const { data } = useLoaderData();
@@ -66,7 +67,7 @@ const AllAssignments = () => {
   return (
     <>
       <Title title={"All Assignments"} />
-      <div className="py-6 flex justify-between items-center gap-4 mx-auto px-2 xl:px-0">
+      <div className="pt-4 pb-6 sm:pt-6 sm:pb-6 flex justify-between items-center gap-2 sm:gap-4 mx-auto px-2 xl:px-0">
         <label className="input rounded-xl w-full border-my-gray-2 no-outline flex items-center gap-2">
           <svg
             className="h-[1em] opacity-50"
@@ -94,7 +95,7 @@ const AllAssignments = () => {
         </label>
 
         <div className="dropdown dropdown-end">
-          <div tabIndex={0} role="button" className="btn w-36 rounded-xl">
+          <div tabIndex={0} role="button" className="btn w-32 sm:w-36 rounded-xl">
             Difficulty Levels
           </div>
           <ul
@@ -115,7 +116,7 @@ const AllAssignments = () => {
       </div>
 
       {loading ? (
-        <div className="text-center py-10 text-xl text-gray-500">Loading...</div>
+        <Loader></Loader>
       ) : assignments.length === 0 ? (
         <div className="flex justify-center py-5">
           <Lottie className="w-96" animationData={animationData} loop={true} />

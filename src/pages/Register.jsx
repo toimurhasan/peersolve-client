@@ -1,10 +1,12 @@
 import React, { use, useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import AuthContext from "../contexts/AuthContext";
 import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser, updateUser } = use(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -22,6 +24,7 @@ const Register = () => {
               showConfirmButton: false,
               timer: 2000,
             });
+            navigate(location?.state || "/");
           })
           .catch((error) => {
             const errorCode = error.code;
@@ -46,7 +49,7 @@ const Register = () => {
 
   const [password, setPassword] = useState("");
   const [isValid, setIsValid] = useState(true);
-  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+[\]{};':"\\|,.<>/?`~\-]).{6,}$/;
 
   const handlePassword = (e) => {
     const value = e.target.value;
@@ -99,7 +102,7 @@ const Register = () => {
             {!isValid && (
               <p className="text-xs text-red-600 mt-4">
                 Password must be at least 6 characters, and include both uppercase and lowercase
-                letters.
+                letters and special characters.
               </p>
             )}
             {isValid ? (

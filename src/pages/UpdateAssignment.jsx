@@ -137,6 +137,7 @@ const UpdateAssignments = () => {
             <label className="label font-semibold">Description</label>
             <textarea
               required
+              minLength={60}
               name="description"
               defaultValue={assignment.description}
               className="textarea w-full textarea-bordered focus:outline-transparent focus:border-gray-400 focus:shadow-xl"
