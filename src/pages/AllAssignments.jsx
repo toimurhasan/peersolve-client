@@ -13,27 +13,38 @@ const AllAssignments = () => {
   const [assignments, setAssignments] = useState(data);
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(false);
+  const [selectedSort, setSelectedSort] = useState(""); // NEW
 
   // Debounced search effect
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
       if (searchTerm.trim() === "") {
-        setAssignments(data); // reset to initial data if empty
+        setAssignments(data);
         return;
       }
 
       setLoading(true);
       axios
         .get(`https://peer-solve-server-side.vercel.app/assignments?searchParams=${searchTerm}`)
-        .then((res) => {
-          setAssignments(res.data || []);
-        })
-        .catch((err) => toast.error("Failed to fetch search results."))
+        .then((res) => setAssignments(res.data || []))
+        .catch(() => toast.error("Failed to fetch search results."))
         .finally(() => setLoading(false));
     }, 500);
 
     return () => clearTimeout(delayDebounce);
   }, [searchTerm, data]);
+
+  // Sort by difficulty effect
+  useEffect(() => {
+    if (!selectedSort) return;
+    setLoading(true);
+    axios
+      .get(`https://peer-solve-server-side.vercel.app/assignments?sortBy=${selectedSort}`)
+      .then((res) => setAssignments(res.data || []))
+      // .then((res) => console.log(res.data))
+      .catch(() => toast.error("Failed to fetch sorted data."))
+      .finally(() => setLoading(false));
+  }, [selectedSort]);
 
   const onDelete = (id) => {
     axios
@@ -81,6 +92,7 @@ const AllAssignments = () => {
             className="w-full outline-none bg-transparent"
           />
         </label>
+
         <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn w-36 rounded-xl">
             Difficulty Levels
@@ -90,17 +102,20 @@ const AllAssignments = () => {
             className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
           >
             <li>
-              <a>Item 1</a>
+              <a onClick={() => setSelectedSort("easy")}>Easy</a>
             </li>
             <li>
-              <a>Item 2</a>
+              <a onClick={() => setSelectedSort("medium")}>Medium</a>
+            </li>
+            <li>
+              <a onClick={() => setSelectedSort("hard")}>Hard</a>
             </li>
           </ul>
         </div>
       </div>
 
       {loading ? (
-        <div className="text-center py-10 text-xl text-gray-500">Searching...</div>
+        <div className="text-center py-10 text-xl text-gray-500">Loading...</div>
       ) : assignments.length === 0 ? (
         <div className="flex justify-center py-5">
           <Lottie className="w-96" animationData={animationData} loop={true} />
