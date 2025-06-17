@@ -25,7 +25,7 @@ const SubmittedAssignmentCard = ({ assignment }) => {
   };
 
   return (
-    <div className="flex flex-col justify-between rounded-2xl border border-base-300 p-4 w-full shadow-sm transition">
+    <div className="flex flex-col justify-center rounded-2xl border border-base-300 p-4 w-full shadow-sm transition">
       {/* ---------- Top section ---------- */}
       <div>
         <h2 className="text-xl text-center mb-2">{title}</h2>
