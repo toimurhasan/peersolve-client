@@ -16,6 +16,8 @@ import MyAttemptedAssignments from "../pages/MyAttemptedAssignments";
 import AssignmentInfo from "../pages/AssignmentInfo";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import UpdateAssignment from "../pages/UpdateAssignment";
+import AboutUs from "../pages/AboutUs";
+import ContactUs from "../pages/ContactUs";
 
 const axiosSecure = useAxiosSecure();
 
@@ -98,6 +100,14 @@ const router = createBrowserRouter([
       {
         path: "/forget-password",
         Component: ForgetPassword,
+      },
+      {
+        path: "/about",
+        Component: AboutUs,
+      },
+      {
+        path: "/contact",
+        Component: ContactUs,
       },
       {
         path: "*",
